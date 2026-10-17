@@ -34,7 +34,7 @@ import { calculate, type CalculateItem } from '@/lib/api';
 import { addHistory, clearHistory, formatWhen, loadHistory, type HistoryEntry } from '@/lib/history';
 import { createLogger } from '@/lib/logger';
 import { applyTheme, canvasBaseColor, getInitialTheme, type Theme } from '@/lib/theme';
-import { downloadPDF, downloadPNG } from '@/lib/share';
+import { downloadPDF, downloadPNG, flattenOnBackground } from '@/lib/share';
 
 const log = createLogger('home');
 
@@ -653,8 +653,11 @@ export default function Home() {
         log.info(`runRoute: start vars=${JSON.stringify(dictOfVars).slice(0, 300)} shapes=${shapes.length}`);
 
         try {
-            const image = composited.toDataURL('image/png');
-            log.debug(`runRoute: canvas encoded payload_chars=${image.length}`);
+            // Flatten on the theme background: the canvas itself is transparent,
+            // and dark ink would vanish against the backend's black composite.
+            const flat = flattenOnBackground(composited, canvasBaseColor(theme));
+            const image = flat.toDataURL('image/png');
+            log.debug(`runRoute: canvas encoded payload_chars=${image.length} size=${flat.width}x${flat.height} bg=${canvasBaseColor(theme)}`);
             const resp = await calculate(image, dictOfVars);
             log.info(`runRoute: backend answered items=${resp.data.length}`);
 

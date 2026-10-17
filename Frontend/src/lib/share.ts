@@ -8,7 +8,7 @@ import { createLogger } from '@/lib/logger';
 
 const log = createLogger('share');
 
-function flattenOnBackground(canvas: HTMLCanvasElement, bg: string): HTMLCanvasElement {
+export function flattenOnBackground(canvas: HTMLCanvasElement, bg: string): HTMLCanvasElement {
   const out = document.createElement('canvas');
   out.width = canvas.width;
   out.height = canvas.height;

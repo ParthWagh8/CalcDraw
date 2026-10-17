@@ -271,6 +271,13 @@ def _normalize_answers(parsed: list) -> list:
         logger.error("_normalize_answers: expected list, got %s", type(parsed).__name__)
         raise ValueError(f"expected list, got {type(parsed).__name__}")
 
+    if not parsed:
+        logger.error(
+            "_normalize_answers: model returned an empty list — nothing recognized in the image "
+            "(blank/illegible drawing or invisible ink on background?)."
+        )
+        raise ValueError("model found nothing to solve in the drawing (empty answer list)")
+
     normalized: list = []
     for idx, item in enumerate(parsed):
         if not isinstance(item, dict):
