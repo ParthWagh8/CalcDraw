@@ -9,9 +9,9 @@
 2. Eraser, Pen, Move tool, Undo, Redo<br>
 3. Shapes: Rectangle, Square, Ellipse, Triangle, Right-Triangle, Diamond, Line, Arrow<br>
 4. Uniform 3px stroke, 12 color palette<br>
-4. AI analyze geometric figures, solve equations and give answer<br>
-5. It can also solve text based qestions<br>
-6. Light and Dark mode available<br>
+5. AI analyze geometric figures, solve equations and give answer<br>
+6. It can also solve text based questions<br>
+7. Light and Dark mode available<br>
 
 ## Tech Stack
 
@@ -19,8 +19,7 @@
 | --- | --- |
 | Frontend | React 19, TypeScript, Vite 6, Tailwind CSS v4, react-draggable, lucide-react, MathJax (cdnjs), axios |
 | Backend | Python 3.12, FastAPI, Pydantic, Pillow, requests, uvicorn |
-| AI | OpenRouter vision model (`nvidia/nemotron-3.5-super-vl:free` by default, configurable) |
-| Deploy | Docker on Render (backend, free plan) · Cloudflare Workers static assets (frontend, free plan) |
+| AI | OpenRouter vision model (`nvidia/nemotron-3.5-super-vl:free`) |
 
 ## Setup
 
