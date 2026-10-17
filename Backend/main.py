@@ -38,9 +38,9 @@ app.add_middleware(
 )
 
 
-@app.get('/')
+@app.api_route('/', methods=['GET', 'HEAD'])
 async def root():
-    logger.debug("GET / health check")
+    logger.debug("GET/HEAD / health check")
     return {"message": "Server is running"}
 
 app.include_router(calculator_router, prefix="/calculate", tags=["calculate"])
