@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs & runtime artifacts
+*.log
+*.pid
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/*

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: calc-be
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /
+    envVars:
+      - key: ENV
+        value: prod
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: nvidia/nemotron-3.5-super-vl:free
+      - key: OPENROUTER_MAX_ATTEMPTS
+        value: "5"
+      - key: OPENROUTER_MAX_TOKENS
+        value: "4096"

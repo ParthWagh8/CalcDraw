@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Brutalist CalcDraw theme.
+ * Light: cream paper. Dark: flat grey. Hard borders + offset shadows only —
+ * no gradients, no glass, no rounded-everything.
+ */
+
+@theme {
+  --color-paper: #f6f1e5;
+  --color-paper-ink: #141414;
+  --color-coal: #232323;
+  --color-coal-ink: #ede6d6;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background: #f6f1e5;
+    color: #141414;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  .dark body {
+    background: #1b1b1b;
+    color: #ede6d6;
+  }
+}
+
+@layer components {
+  /* Chunky button: 2px border, hard offset shadow, press-down effect. */
+  .btn-brutal {
+    @apply inline-flex cursor-pointer items-center justify-center gap-1 border-2 border-black bg-white px-3 py-2 font-mono text-xs font-bold uppercase tracking-widest text-black shadow-[4px_4px_0_#000] transition-none select-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_#000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none disabled:pointer-events-none disabled:opacity-40;
+  }
+  .dark .btn-brutal {
+    @apply border-[#ede6d6] bg-[#2a2a2a] text-[#ede6d6] shadow-[4px_4px_0_#ede6d6] hover:shadow-[2px_2px_0_#ede6d6];
+  }
+
+  /* Flat card with hard shadow. */
+  .panel-brutal {
+    @apply border-2 border-black bg-[#f6f1e5] text-black shadow-[6px_6px_0_#000];
+  }
+  .dark .panel-brutal {
+    @apply border-[#ede6d6] bg-[#232323] text-[#ede6d6] shadow-[6px_6px_0_#ede6d6];
+  }
+
+  /* Alignment dot grid, Apple-style. Light = cream paper, dark = flat grey. */
+  .canvas-dots-light {
+    background-color: #f6f1e5;
+    background-image: radial-gradient(circle, #d9cfb6 1.4px, transparent 1.5px);
+    background-size: 30px 30px;
+  }
+  .canvas-dots-dark {
+    background-color: #232323;
+    background-image: radial-gradient(circle, #484848 1.4px, transparent 1.5px);
+    background-size: 30px 30px;
+  }
+
+  /* Answer output: dark ink in light mode, light ink in dark mode.
+     The inherit chain forces MathJax-rendered math to follow the chip
+     instead of any UA/default color. */
+  .latex-content {
+    color: #141414;
+  }
+  .dark .latex-content {
+    color: #ede6d6;
+  }
+  .latex-content .mjx-chtml,
+  .latex-content .mjx-math,
+  .latex-content .MathJax,
+  .latex-content .MathJax_Display {
+    color: inherit;
+  }
+}
